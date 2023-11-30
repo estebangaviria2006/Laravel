@@ -14,10 +14,11 @@
             Electrodomesticos full
         </h1>
         <nav class="flex gap-2 items-center">
+            <a class="font-bold uppercase text-gray-600" href="{{ route('login') }}"> Login </a>
             <a class="font-bold uppercase text-gray-600" href="{{ route('register') }}"> Crear cuenta </a>
         </nav>
     </header>
-    <main class="flex justify-center container mx-auto mt-10">
+    <main class="flex flex-col justify-center container mx-auto mt-10">
         <h2 class="font-black text-center text-3xl mb-10">
             @yield('titulo')
         </h2>
