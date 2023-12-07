@@ -13,10 +13,22 @@
         <h1 class="text-3xl font-black">
             Electrodomesticos full
         </h1>
-        <nav class="flex gap-2 items-center">
-            <a class="font-bold uppercase text-gray-600" href="{{ route('login') }}"> Login </a>
-            <a class="font-bold uppercase text-gray-600" href="{{ route('register') }}"> Crear cuenta </a>
-        </nav>
+        @auth
+            <nav class="flex gap-2 items-center">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="font-bold uppercase text-gray-600"> Cerrar sesión </button>
+                </form>
+            </nav>
+        @endauth
+
+        @guest
+            <nav class="flex gap-2 items-center">
+                <a class="font-bold uppercase text-gray-600" href="{{ route('login') }}"> Login </a>
+                <a class="font-bold uppercase text-gray-600" href="{{ route('register') }}"> Crear cuenta </a>
+            </nav>
+        @endguest
+        
     </header>
     <main class="flex flex-col justify-center container mx-auto mt-10">
         <h2 class="font-black text-center text-3xl mb-10">
