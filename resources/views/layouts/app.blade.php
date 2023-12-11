@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,36 @@
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
 </head>
+
 <body>
 
-    <header class="p-5 border-b bg-white shadow flex justify-between items-center">
+    <header class="flex items-center justify-between p-5 bg-white border-b shadow">
         <h1 class="text-3xl font-black">
-            Electrodomesticos full
+            Electrodomesticos gaviria
         </h1>
         @auth
-            <nav class="flex gap-2 items-center">
+            <nav class="flex items-center gap-2">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button class="font-bold uppercase text-gray-600"> Cerrar sesión </button>
+                    <button class="font-bold text-gray-600 uppercase"> Cerrar sesión </button>
                 </form>
             </nav>
         @endauth
 
         @guest
-            <nav class="flex gap-2 items-center">
-                <a class="font-bold uppercase text-gray-600" href="{{ route('login') }}"> Login </a>
-                <a class="font-bold uppercase text-gray-600" href="{{ route('register') }}"> Crear cuenta </a>
+            <nav class="flex items-center gap-2">
+                <a class="font-bold text-gray-600 uppercase" href="{{ route('login') }}"> Login </a>
+                <a class="font-bold text-gray-600 uppercase" href="{{ route('register') }}"> Crear cuenta </a>
             </nav>
         @endguest
-        
+
     </header>
-    <main class="flex flex-col justify-center container mx-auto mt-10">
-        <h2 class="font-black text-center text-3xl mb-10">
+    <main class="container flex flex-col justify-center mx-auto mt-10">
+        <h2 class="mb-10 text-3xl font-black text-center">
             @yield('titulo')
         </h2>
         @yield('contenido')
     </main>
 </body>
+
 </html>

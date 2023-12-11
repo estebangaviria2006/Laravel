@@ -5,68 +5,65 @@
 @endsection
 
 @section('contenido')
+    <div class="md:flex md:justify-center">
+        <div class="p-6 bg-white rounded-lg shadow-xl md:w-96">
+            <form method="post" action="{{ url('clientes/' . $cliente->cedula) }}">
+                @csrf
+                @method('PUT')
 
-        <div class="md:flex md:justify-center">
-            <div class="md:w-96 bg-white p-6 rounded-lg shadow-xl">
-                <form method="post" action="{{ url('clientes/'.$cliente->cedula) }}">
-                    @csrf
-                    @method('PUT')
-                    
-                    @if (session('mensaje'))
-
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ session('mensaje') }} </p>
-                        
-                    @endif
-                    <div class="mb-5">
-                        <label for="cedula" class="mb-2 block uppercase text-gray-500" > Cedula </label>
-                        <input type="number" name="cedula" id="cedula" class="border p-3 w-full rounded-lg @error('name')
+                @if (session('mensaje'))
+                    <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg">{{ session('mensaje') }} </p>
+                @endif
+                <div class="mb-5">
+                    <label for="cedula" class="block mb-2 text-gray-500 uppercase"> Cedula </label>
+                    <input type="number" name="cedula" id="cedula"
+                        class="border p-3 w-full rounded-lg @error('name')
                             border-red-500
-                        @enderror" placeholder="Ingrese su cedula" value="{{ $cliente->cedula }}">
-                        @error('cedula')
-                        
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center"> {{ $message }} </p>
-                            
-                        @enderror
-                    </div>
-                    <div class="mb-5">
-                        <label for="name" class="mb-2 block uppercase text-gray-500" > Nombre </label>
-                        <input type="name" name="name" id="name" class="border p-3 w-full rounded-lg @error('name')
+                        @enderror"
+                        placeholder="Ingrese su cedula" value="{{ $cliente->cedula }}">
+                    @error('cedula')
+                        <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg"> {{ $message }} </p>
+                    @enderror
+                </div>
+                <div class="mb-5">
+                    <label for="name" class="block mb-2 text-gray-500 uppercase"> Nombre </label>
+                    <input type="name" name="name" id="name"
+                        class="border p-3 w-full rounded-lg @error('name')
                             border-red-500
-                        @enderror" placeholder="Ingrese su nombre" value="{{ $cliente->nombre }}">
-                        @error('name')
-                        
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center"> {{ $message }} </p>
-                            
-                        @enderror
-                    </div>
-                    <div class="mb-5">
-                        <label for="direccion" class="mb-2 block uppercase text-gray-500" > Dirección </label>
-                        <input type="text" name="direccion" id="direccion" class="border p-3 w-full rounded-lg @error('name')
+                        @enderror"
+                        placeholder="Ingrese su nombre" value="{{ $cliente->nombre }}">
+                    @error('name')
+                        <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg"> {{ $message }} </p>
+                    @enderror
+                </div>
+                <div class="mb-5">
+                    <label for="direccion" class="block mb-2 text-gray-500 uppercase"> Dirección </label>
+                    <input type="text" name="direccion" id="direccion"
+                        class="border p-3 w-full rounded-lg @error('name')
                             border-red-500
-                        @enderror" placeholder="Ingrese su direccion" value="{{ $cliente->direccion }}">
-                        @error('direccion')
-                        
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center"> {{ $message }} </p>
-                            
-                        @enderror
-                    </div>
-                    <div class="mb-5">
-                        <label for="telefono" class="mb-2 block uppercase text-gray-500" > Telefono </label>
-                        <input type="number" name="telefono" id="telefono" class="border p-3 w-full rounded-lg @error('name')
+                        @enderror"
+                        placeholder="Ingrese su direccion" value="{{ $cliente->direccion }}">
+                    @error('direccion')
+                        <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg"> {{ $message }} </p>
+                    @enderror
+                </div>
+                <div class="mb-5">
+                    <label for="telefono" class="block mb-2 text-gray-500 uppercase"> Telefono </label>
+                    <input type="number" name="telefono" id="telefono"
+                        class="border p-3 w-full rounded-lg @error('name')
                             border-red-500
-                        @enderror" placeholder="Ingrese su telefono" value="{{ $cliente->telefono }}">
-                        @error('telefono')
-                        
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center"> {{ $message }} </p>
-                            
-                        @enderror
-                    </div>
-                    <button type="submit" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg"> Actualizar cliente </button>
-                </form>
-            </div>
+                        @enderror"
+                        placeholder="Ingrese su telefono" value="{{ $cliente->telefono }}">
+                    @error('telefono')
+                        <p class="p-2 my-2 text-sm text-center text-white bg-red-500 rounded-lg"> {{ $message }} </p>
+                    @enderror
+                </div>
+                <button type="submit"
+                    class="w-full p-3 font-bold text-white uppercase transition-colors rounded-lg cursor-pointer bg-sky-300 hover:bg-sky-500">
+                    Actualizar cliente </button>
+            </form>
         </div>
-
-
+    </div>
 @endsection
 
 {{-- @extends('layouts.app')
@@ -77,11 +74,11 @@
 
     @csrf
     @method('DELETE')
-    
+
     <p> Seguro que quieres eliminar a <strong> {{ $cliente->nombre }} ? </strong> </p>
 
-    <button type="submit" class="bg-green-500 border border-green-800 p-1 rounded-lg"> Confirmar </button>
-    <button type="button" class="bg-red-500 border border-red-800 p-1 rounded-lg ml-5"> Regresar </button>
+    <button type="submit" class="p-1 bg-green-500 border border-green-800 rounded-lg"> Confirmar </button>
+    <button type="button" class="p-1 ml-5 bg-red-500 border border-red-800 rounded-lg"> Regresar </button>
 
 </form>
 
