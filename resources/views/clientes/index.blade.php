@@ -29,7 +29,7 @@
                     <button type="button" class="bg-green-500 border border-green-800 p-1 rounded-lg ml-5"> <a href="{{ url('clientes/'.$cliente->cedula.'/edit') }}"> Editar </a></button>
                 </td>
                 <td class="border-b-2 px-4 py-2">
-                    <form action="{{ route('clientes.destroy', $cliente->cedula) }}" method="post">
+                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="post">
 
                         @csrf
                         @method('DELETE')

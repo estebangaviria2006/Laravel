@@ -16,6 +16,7 @@ class ClienteController extends Controller
         $this->middleware('auth');
     }
 
+    
     public function index()
     {
         //
@@ -100,7 +101,8 @@ class ClienteController extends Controller
     public function destroy($cedula)
     {
         //
-        $clientes=Cliente::find($cedula);
+        $clientes=Cliente::where('id', '=', $cedula)->first();
+        //$clientes=Cliente::find($cedula);
         $clientes->delete();
         return redirect()->back();
     }
